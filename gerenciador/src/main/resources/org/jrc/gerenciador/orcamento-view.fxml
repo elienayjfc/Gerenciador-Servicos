@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.jrc.gerenciador.orcamentoController">
+   <children>
+      <Label layoutX="43.0" layoutY="14.0" text="Cliente: " />
+      <ComboBox fx:id="cliente" layoutX="43.0" layoutY="41.0" prefHeight="25.0" prefWidth="377.0" />
+      <Label layoutX="430.0" layoutY="14.0" text="Data do orçamento: " />
+      <DatePicker fx:id="date" layoutX="430.0" layoutY="41.0" prefHeight="25.0" prefWidth="163.0" />
+      <Label layoutX="43.0" layoutY="79.0" text="Serviço/Material:" />
+      <TextField fx:id="servico" layoutX="43.0" layoutY="101.0" prefHeight="25.0" prefWidth="209.0" />
+      <Label layoutX="268.0" layoutY="79.0" text="Valor:" />
+      <TextField fx:id="valor" layoutX="268.0" layoutY="101.0" prefHeight="25.0" prefWidth="118.0" />
+      <Label layoutX="45.0" layoutY="132.0" text="Observações:" />
+      <TextArea fx:id="obs" layoutX="45.0" layoutY="157.0" prefHeight="43.0" prefWidth="429.0" />
+      <Button fx:id="add" layoutX="487.0" layoutY="166.0" mnemonicParsing="false" onAction="#Add" style="-fx-background-color: #004BA8; -fx-background-radius: 5;" text="Adicionar" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font>
+      </Button>
+      <TableView fx:id="tabela" layoutX="29.0" layoutY="213.0" prefHeight="119.0" prefWidth="550.0">
+        <columns>
+          <TableColumn fx:id="item" prefWidth="44.0" text="Item " />
+          <TableColumn fx:id="serv" prefWidth="244.0" text="Serviço/Material " />
+            <TableColumn fx:id="v1" prefWidth="62.0" text="Valor" />
+            <TableColumn fx:id="obse" prefWidth="199.0" text="Observações" />
+        </columns>
+      </TableView>
+      <Label layoutX="45.0" layoutY="339.0" text="Valor Total: " />
+      <Label fx:id="valorT" layoutX="116.0" layoutY="339.0" textFill="#1ba11d" />
+      <Button fx:id="salvar" layoutX="449.0" layoutY="344.0" mnemonicParsing="false" style="-fx-background-color: green; -fx-background-radius: 5;" text="Salvar" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font>
+      </Button>
+      <Button fx:id="cancelar" layoutX="507.0" layoutY="344.0" mnemonicParsing="false" onAction="#cancel" style="-fx-background-color: red; -fx-background-radius: 5;" text="Cancelar" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font>
+      </Button>
+   </children>
+</AnchorPane>

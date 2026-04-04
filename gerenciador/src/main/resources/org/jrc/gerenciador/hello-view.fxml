@@ -14,7 +14,7 @@
     </padding>
  <AnchorPane id="principal" focusTraversable="true" maxHeight="-1.0" maxWidth="-1.0" prefHeight="-1.0" prefWidth="-1.0">
    <children>
-         <Button id="newCliente" fx:id="newCliente" layoutX="66.0" layoutY="-20.0" mnemonicParsing="false" prefHeight="41.0" prefWidth="135.0" text="Novo Cliente" underline="true">
+         <Button id="newCliente" fx:id="newCliente" layoutX="66.0" layoutY="-20.0" mnemonicParsing="false" onAction="#clicar" prefHeight="41.0" prefWidth="135.0" text="Novo Cliente" underline="true">
             <font>
                <Font name="Goldman Regular" size="12.0" />
             </font>
@@ -24,7 +24,7 @@
                <Font name="Goldman Regular" size="12.0" />
             </font>
          </Button>
-         <Button id="newAtendimento" fx:id="new_atendimento" layoutX="214.0" layoutY="-20.0" mnemonicParsing="false" prefHeight="41.0" prefWidth="135.0" text="Novo atendimento" underline="true">
+         <Button id="newAtendimento" fx:id="orcamento" layoutX="214.0" layoutY="-20.0" mnemonicParsing="false" onAction="#AbrirOrc" prefHeight="41.0" prefWidth="135.0" text="Orçamento" underline="true">
             <font>
                <Font name="Goldman Regular" size="12.0" />
             </font>

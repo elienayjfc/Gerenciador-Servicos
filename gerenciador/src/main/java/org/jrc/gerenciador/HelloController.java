@@ -4,7 +4,10 @@ package org.jrc.gerenciador;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 //import javafx.scene.control.TableView;
 import javafx.stage.Stage;
@@ -14,7 +17,7 @@ public class HelloController {
   private Button newCliente;
 
   @FXML
-  private Button newAtendimento;
+  private Button orcamento;
 
   @FXML
   private Button financeiro;
@@ -31,9 +34,38 @@ public class HelloController {
     stage.close();
   }
 
+  @FXML
+  public void clicar(ActionEvent event){
+    try {
+      FXMLLoader loader = new FXMLLoader(getClass().getResource("client-view.fxml"));
+      Parent root = loader.load();
+      Scene novaTela = new Scene(root);
 
+      Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+      stage.setScene(novaTela);
+      stage.setTitle("Novo Cliente");
+      stage.show();
+
+    } catch (Exception e) {
+      System.err.println(e + "ERRO AO CARREGAR PAGINA");
+    }
+
+  }
+  @FXML
+  public void AbrirOrc(ActionEvent event) {
+    try {
+      FXMLLoader loader = new FXMLLoader(getClass().getResource("orcamento-view.fxml"));
+      Parent root = loader.load();
+      Scene telaOrc = new Scene(root);
+      
+      Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+      stage.setScene(telaOrc);
+      stage.setTitle("Novo orçamento");
+      stage.show();
+
+    } catch (Exception e) {
+      System.err.println(e + "ERRO AO ABRIR TELA");
+    }
   
-
-
-    
+  }
 }
