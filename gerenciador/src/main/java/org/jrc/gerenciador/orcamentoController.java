@@ -13,12 +13,12 @@ import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.Label;
-//import javafx.scene.control.TableCell;
+import javafx.scene.control.TableCell;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
-//import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
 
 public class orcamentoController {
@@ -41,7 +41,7 @@ public class orcamentoController {
     private Button add;
 
     @FXML
-    private TableView <orcamento> servicos;
+    private TableView <orcamento> tabela;
 
     @FXML
     private TableColumn <orcamento, Integer> item; 
@@ -68,22 +68,21 @@ public class orcamentoController {
     private ObservableList<orcamento> listaOrcamentos = FXCollections.observableArrayList();
 
     
-    @FXML
+    @FXML //TODO: MÉTODO QUE FAZ O GET DOS TEXT FIELD E ADICIONA
     void adicionaItem() {
-        String servico = serv.getText();
-        String valor = v1.getText();
-        Double conver =  Double.valueOf(valor);
-        String observacoes = obse.getText();
+        String serv = servico.getText();
+        String v1 = valor.getText();
+        String observacoes = obs.getText();
 
-        if (!servico.isEmpty() && !valor.isEmpty() && !observacoes.isEmpty() ) {
-            listaOrcamentos.add(new orcamento(null, servico, conver, observacoes));            
+        if (!serv.isEmpty() && !v1.isEmpty() && !observacoes.isEmpty() ) {
+            listaOrcamentos.add(new orcamento( serv, v1, observacoes));            
         }
 
     }
 
    
 
-    @FXML
+    @FXML //TODO: Event que cancela orçamento e volta para tela principal
     public void cancel(ActionEvent event) {
         try {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("hello-view.fxml"));
@@ -100,13 +99,8 @@ public class orcamentoController {
        }
     }
 
-    @FXML
+    @FXML //TODO: Event que adiciona itens na tabela
     public void Add (ActionEvent event) {
-        adicionaItem();
-    }
-
-    /* @FXML
-    public void initialize(){
         item.setCellFactory(column -> {
             return new TableCell<orcamento, Integer>() {
                 @Override
@@ -120,16 +114,16 @@ public class orcamentoController {
                 } 
             };
         });
-        serv.setCellValueFactory(new PropertyValueFactory<>("Serviço/Material"));
+        serv.setCellValueFactory(new PropertyValueFactory<>("Servico"));
         v1.setCellValueFactory(new PropertyValueFactory<>("Valor"));
-        obse.setCellValueFactory(new PropertyValueFactory<>("Observações"));
+        obse.setCellValueFactory(new PropertyValueFactory<>("Observacoes"));
 
-        servicos.setItems(listaOrcamentos);
-
+        tabela.setItems(listaOrcamentos);
+        adicionaItem();
     }
 
-
-     */
+    
+     
 
 
 

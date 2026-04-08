@@ -84,7 +84,7 @@ public class clientController implements Initializable{
         ObservableList<String> listaCidade = FXCollections.observableArrayList("Vespasiano", "Belo Horizonte", "Lagoa Santa", "Santa Luzia", "Ribeirão das Neves");
         cidade.setItems(listaCidade);
 
-        ObservableList<String> listaImovel = FXCollections.observableArrayList("Residencial","Induatrial", "Comercial");
+        ObservableList<String> listaImovel = FXCollections.observableArrayList("Residencial","Industrial", "Comercial");
         imovel.setItems(listaImovel);
         
     }  
