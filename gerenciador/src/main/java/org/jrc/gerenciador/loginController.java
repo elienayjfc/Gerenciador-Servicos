@@ -50,7 +50,7 @@ public class loginController {
         String Senha = this.senha.getText(); 
 
         if (autenticacao.validar(usuario, Senha)) {
-            System.err.println("Entrou");
+            System.out.println("Entrou");
             mensagem.setText("Acesso permitido");
             mensagem.setStyle("-fx-text-fill: green; -fx-alignment: center; -fx-font-weight: bold");
             

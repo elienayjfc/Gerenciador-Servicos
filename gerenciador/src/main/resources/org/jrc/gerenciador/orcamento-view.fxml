@@ -23,17 +23,18 @@
       <TextField fx:id="valor" layoutX="268.0" layoutY="101.0" prefHeight="25.0" prefWidth="118.0" />
       <Label layoutX="45.0" layoutY="132.0" text="Observações:" />
       <TextArea fx:id="obs" layoutX="45.0" layoutY="157.0" prefHeight="43.0" prefWidth="429.0" />
-      <Button fx:id="add" layoutX="487.0" layoutY="166.0" mnemonicParsing="false" onAction="#Add" style="-fx-background-color: #004BA8; -fx-background-radius: 5;" text="Adicionar" textFill="WHITE">
+      <Button fx:id="add" layoutX="487.0" layoutY="166.0" mnemonicParsing="false" onAction="#Add" prefHeight="25.0" prefWidth="71.0" style="-fx-background-color: #004BA8; -fx-background-radius: 5;" text="Adicionar" textFill="WHITE">
          <font>
             <Font name="System Bold" size="12.0" />
          </font>
       </Button>
-      <TableView fx:id="tabela" layoutX="29.0" layoutY="213.0" prefHeight="119.0" prefWidth="550.0">
+      <TableView fx:id="tabela" editable="true" layoutX="29.0" layoutY="213.0" prefHeight="119.0" prefWidth="550.0">
         <columns>
-          <TableColumn fx:id="item" prefWidth="44.0" text="Item " />
-          <TableColumn fx:id="serv" prefWidth="244.0" text="Serviço/Material " />
-            <TableColumn fx:id="v1" prefWidth="62.0" text="Valor" />
-            <TableColumn fx:id="obse" prefWidth="199.0" text="Observações" />
+            <TableColumn fx:id="selecao" prefWidth="47.0" text="Seleção" />
+          <TableColumn fx:id="item" prefWidth="40.0" text="Item " />
+          <TableColumn fx:id="serv" prefWidth="235.0" text="Serviço/Material " />
+            <TableColumn fx:id="v1" prefWidth="50.0" text="Valor" />
+            <TableColumn fx:id="obse" prefWidth="177.0" text="Observações" />
         </columns>
       </TableView>
       <Label layoutX="45.0" layoutY="339.0" text="Valor Total: " />
@@ -44,6 +45,11 @@
          </font>
       </Button>
       <Button fx:id="cancelar" layoutX="507.0" layoutY="344.0" mnemonicParsing="false" onAction="#cancel" style="-fx-background-color: red; -fx-background-radius: 5;" text="Cancelar" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font>
+      </Button>
+      <Button fx:id="remover" layoutX="346.0" layoutY="344.0" mnemonicParsing="false" onAction="#delete" style="-fx-background-color: red; -fx-background-radius: 5;" text="Remover item" textFill="WHITE">
          <font>
             <Font name="System Bold" size="12.0" />
          </font>
