@@ -4,6 +4,9 @@ package org.jrc.gerenciador;
 import java.net.URL;
 import java.util.ResourceBundle;
 
+import org.jrc.gerenciador.Database.clienteDao;
+import org.jrc.gerenciador.Models.ClienteModel;
+
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -75,8 +78,26 @@ public class clientController implements Initializable{
        } catch (Exception e) {
         System.err.println(e + "ERRO AO CARREGAR TELA");
        }
-        
+    }
 
+    @FXML
+    public void salvar(ActionEvent event) {
+        ClienteModel cliente = new ClienteModel();
+        clienteDao cDao = new clienteDao();
+
+        cliente.setNome(nome.getText());
+        cliente.setCpf_cnpj(cpf.getText());
+        cliente.setEndereco(endereco.getText());
+        cliente.setNumero(Integer.parseInt(numero.getText()));
+        cliente.setBairro(bairro.getText());
+        cliente.setCidade(cidade.getValue());
+        cliente.setCep(cep.getText());
+        cliente.setTipoImovel(imovel.getValue());
+        cliente.setTelefone(telefone.getText());
+        cliente.setObservacoes(observacoes.getText());
+
+        cDao.create(cliente);
+       
     }
 
     @Override

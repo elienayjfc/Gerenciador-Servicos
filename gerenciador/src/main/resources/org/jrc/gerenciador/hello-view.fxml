@@ -19,7 +19,7 @@
                <Font name="Goldman Regular" size="12.0" />
             </font>
          </Button>
-         <Button id="financeiro" fx:id="financeiro" layoutX="355.0" layoutY="-20.0" mnemonicParsing="false" prefHeight="41.0" prefWidth="135.0" text="Financeiro" underline="true" wrapText="true">
+         <Button id="financeiro" fx:id="financeiro" layoutX="355.0" layoutY="-20.0" mnemonicParsing="false" onAction="#abrirFinanceiro" prefHeight="41.0" prefWidth="135.0" text="Financeiro" underline="true" wrapText="true">
             <font>
                <Font name="Goldman Regular" size="12.0" />
             </font>

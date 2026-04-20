@@ -68,4 +68,21 @@ public class HelloController {
     }
   
   }
+
+  @FXML
+  public void abrirFinanceiro(ActionEvent event) {
+    try {
+      FXMLLoader loader =  new FXMLLoader(getClass().getResource("financeiro-view.fxml"));
+      Parent root = loader.load();
+      Scene telaFinanceiro = new Scene(root);
+
+      Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+      stage.setScene(telaFinanceiro);
+      stage.setTitle("Financeiro");
+      stage.show();
+      
+    } catch (Exception e) {
+      System.err.println("Erro ao carregar a tela" + e);
+    }
+  }
 }

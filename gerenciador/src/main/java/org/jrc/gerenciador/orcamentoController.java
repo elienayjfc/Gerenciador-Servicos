@@ -3,8 +3,15 @@ package org.jrc.gerenciador;
 
 import java.io.IOException;
 import java.net.URL;
+import java.text.NumberFormat;
+import java.util.List;
+import java.util.Locale;
 import java.util.ResourceBundle;
 
+import org.jrc.gerenciador.Database.clienteDao;
+import org.jrc.gerenciador.Models.ClienteModel;
+
+import javafx.beans.binding.Bindings;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -26,10 +33,11 @@ import javafx.scene.control.TextField;
 import javafx.scene.control.cell.CheckBoxTableCell;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
+import javafx.util.StringConverter;
 
 public class orcamentoController implements Initializable {
     @FXML
-    private ComboBox <String> cliente; 
+    private ComboBox <ClienteModel> cliente; 
 
     @FXML
     private DatePicker date;
@@ -111,12 +119,16 @@ public class orcamentoController implements Initializable {
        } 
     }
 
+   
+
     //TODO: inicializa a tabela com o campo de seleção vazio
     @Override
     public void initialize(URL url, ResourceBundle resources) {
         selecao.setCellValueFactory(new PropertyValueFactory<>("selecao"));
         selecao.setCellFactory(CheckBoxTableCell.forTableColumn(selecao)); 
-        valorT.setText(somarValores());
+        valorT.textProperty().bind(Bindings.createStringBinding(() -> somarValores(), listaOrcamentos));
+        carregarClientes();
+        
     }
 
     @FXML //TODO: Event que adiciona itens na tabela
@@ -158,11 +170,34 @@ public class orcamentoController implements Initializable {
         Double ValorTotal = 0.0;
         
         
-        for (Orcamento item : tabela.getItems()) {
+        for (Orcamento item : listaOrcamentos) {
             Double ValorConvertido = Double.parseDouble(item.getValor().replace(",", "."));
             ValorTotal += ValorConvertido;
         }
-        System.out.println(ValorTotal);
-        return  String.valueOf(ValorTotal);
+        NumberFormat Real = NumberFormat.getCurrencyInstance(Locale.of("pt","BR"));
+        return  Real.format(ValorTotal);
+    }
+
+    clienteDao clienteD = new clienteDao();
+
+    private void carregarClientes() {
+        try {
+            List<ClienteModel>  lista = clienteD.read();
+            ObservableList<ClienteModel> observableList = FXCollections.observableArrayList(lista);
+            cliente.setItems(observableList);
+
+            cliente.setConverter(new StringConverter<ClienteModel>() {
+                @Override
+                public String toString(ClienteModel c) {
+                    return (c == null) ? "" : c.getNome();
+                }
+                @Override
+                public ClienteModel fromString(String string) {
+                    return null;
+                }
+            });
+        } catch (Exception e) {
+            System.err.println("Erro na conversão");
+        }
     }
 }
