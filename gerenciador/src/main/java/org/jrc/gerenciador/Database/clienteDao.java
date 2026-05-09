@@ -75,4 +75,69 @@ public class clienteDao {
 
         return clienteList;
     }
+
+     public void update(ClienteModel cliente) {
+        Connection con = connection.getConnection();
+        PreparedStatement stmt = null;
+
+        try {
+            stmt = con.prepareStatement("UPDATE CLIENTES SET NOME = ?, CPF_CNPJ = ?, ENDERECO = ?, NUMERO = ?, BAIRRO = ? , CIDADE = ?, CEP = ?, TIPO_IMOVEL = ?, TELEFONE = ?, OBSERVACOES = ? WHERE ID = ?");
+            stmt.setString(1, cliente.getNome());
+            stmt.setString(2, cliente.getCpf_cnpj());
+            stmt.setString(3, cliente.getEndereco());
+            stmt.setInt(4, cliente.getNumero());
+            stmt.setString(5, cliente.getBairro());
+            stmt.setString(6, cliente.getCidade());
+            stmt.setString(7, cliente.getCep());
+            stmt.setString(8, cliente.getTipoImovel());
+            stmt.setString(9, cliente.getTelefone());
+            stmt.setString(10, cliente.getObservacoes());
+            stmt.setInt(11, cliente.getId());
+
+            stmt.executeUpdate();
+
+            Alert alert = new Alert(AlertType.INFORMATION);
+            alert.setTitle("Sucesso");
+            alert.setHeaderText("Operação concluida com sucesso");
+            alert.showAndWait();
+
+            System.out.println("Dados atualizados com suscesso");
+        } catch (Exception e) {
+            Alert alert = new Alert(AlertType.INFORMATION);
+            alert.setTitle("ERRO");
+            alert.setHeaderText("Houve um erro durante a execução" + e);
+            alert.showAndWait();
+            System.err.println("Erro ao inserir dados");
+        } finally {
+            connection.closeConnection(con, stmt);
+        }
+    }
+
+     public void delete(ClienteModel cliente) {
+        Connection con = connection.getConnection();
+        PreparedStatement stmt = null;
+
+        try {
+            stmt = con.prepareStatement("DELETE FROM CLIENTES WHERE ID = ?");
+           
+            stmt.setInt(1, cliente.getId());
+
+            stmt.executeUpdate();
+
+            Alert alert = new Alert(AlertType.INFORMATION);
+            alert.setTitle("Sucesso");
+            alert.setHeaderText("Excluido com suscesso com sucesso");
+            alert.showAndWait();
+
+            System.out.println("Dados atualizados com suscesso");
+        } catch (Exception e) {
+            Alert alert = new Alert(AlertType.INFORMATION);
+            alert.setTitle("ERRO");
+            alert.setHeaderText("Houve um erro durante a execução" + e);
+            alert.showAndWait();
+            System.err.println("Erro ao inserir dados");
+        } finally {
+            connection.closeConnection(con, stmt);
+        }
+    }
 }

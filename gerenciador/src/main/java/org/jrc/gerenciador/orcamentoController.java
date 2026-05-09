@@ -9,7 +9,9 @@ import java.util.Locale;
 import java.util.ResourceBundle;
 
 import org.jrc.gerenciador.Database.clienteDao;
+import org.jrc.gerenciador.Database.orcamentoDao;
 import org.jrc.gerenciador.Models.ClienteModel;
+import org.jrc.gerenciador.Models.orcamentoModel;
 
 import javafx.beans.binding.Bindings;
 import javafx.collections.FXCollections;
@@ -90,16 +92,15 @@ public class orcamentoController implements Initializable {
     @FXML //TODO: MÉTODO QUE FAZ O GET DOS TEXT FIELD E ADICIONA
     void adicionaItem() {
         String serv = servico.getText();
-        String v1 = valor.getText();
+        Double v1 = Double.parseDouble(valor.getText()) ;
+        String v1C = String.valueOf(v1);
         String observacoes = obs.getText();
 
-        if (!serv.isEmpty() && !v1.isEmpty()) {
+        if (!serv.isEmpty() && !v1C.isEmpty()) {
             listaOrcamentos.add(new Orcamento( serv, v1, observacoes));            
         }
 
     }
-
-   
 
     @FXML //TODO: Event que cancela orçamento e volta para tela principal
     public void cancel(ActionEvent event) throws IOException{
@@ -171,7 +172,7 @@ public class orcamentoController implements Initializable {
         
         
         for (Orcamento item : listaOrcamentos) {
-            Double ValorConvertido = Double.parseDouble(item.getValor().replace(",", "."));
+            Double ValorConvertido = item.getValor();
             ValorTotal += ValorConvertido;
         }
         NumberFormat Real = NumberFormat.getCurrencyInstance(Locale.of("pt","BR"));
@@ -198,6 +199,26 @@ public class orcamentoController implements Initializable {
             });
         } catch (Exception e) {
             System.err.println("Erro na conversão");
+        }
+    }
+
+    @FXML
+    public void salvar(ActionEvent event){
+        orcamentoDao orcamento = new orcamentoDao();
+        orcamentoModel model = new orcamentoModel();
+        List<Orcamento> LTabela = tabela.getItems();
+
+        if(!LTabela.isEmpty()) {
+            model.setCliente(String.valueOf(cliente.getValue()));
+            model.setData(date.getValue());
+            boolean suecesso = orcamento.create(LTabela, model);
+
+            if (suecesso) {
+                System.out.println("Itens Salvos com sucesso");
+                tabela.getItems().clear();
+            } else {
+                System.out.println("Erro ao salvar itens");
+            }
         }
     }
 }

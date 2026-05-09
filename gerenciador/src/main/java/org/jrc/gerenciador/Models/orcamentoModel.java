@@ -1,14 +1,23 @@
 package org.jrc.gerenciador.Models;
 
+import java.time.LocalDate;
+
 public class orcamentoModel {
-    private String data;
+    private String cliente;
+    private LocalDate data;
     private String servico_Material;
     private Double valor;
     private String observacoes; 
 
-    public String getData() {return data;}
+    public String getCliente() {return cliente;}
 
-    public void setData(String data) {
+    public void setCliente(String cliente) {
+        this.cliente = cliente;
+    }
+
+    public LocalDate getData() {return data;}
+
+    public void setData(LocalDate data) {
         this.data = data;
     }
 

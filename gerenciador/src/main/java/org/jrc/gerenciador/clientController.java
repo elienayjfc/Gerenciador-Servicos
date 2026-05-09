@@ -97,6 +97,18 @@ public class clientController implements Initializable{
         cliente.setObservacoes(observacoes.getText());
 
         cDao.create(cliente);
+
+        nome.clear();
+        cpf.clear();
+        endereco.clear();
+        numero.clear();
+        bairro.clear();
+        cidade.getSelectionModel().clearSelection();
+        cep.clear();
+        imovel.getSelectionModel().clearSelection();
+        telefone.clear();
+        observacoes.clear();
+        nome.requestFocus();
        
     }
 

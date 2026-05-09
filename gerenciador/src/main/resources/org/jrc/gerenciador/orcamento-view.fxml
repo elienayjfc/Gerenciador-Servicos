@@ -39,7 +39,7 @@
       </TableView>
       <Label layoutX="45.0" layoutY="339.0" text="Valor Total: " />
       <Label fx:id="valorT" layoutX="116.0" layoutY="339.0" textFill="#1ba11d" />
-      <Button fx:id="salvar" layoutX="449.0" layoutY="344.0" mnemonicParsing="false" style="-fx-background-color: green; -fx-background-radius: 5;" text="Salvar" textFill="WHITE">
+      <Button fx:id="salvar" layoutX="449.0" layoutY="344.0" mnemonicParsing="false" onAction="#salvar" style="-fx-background-color: green; -fx-background-radius: 5;" text="Salvar" textFill="WHITE">
          <font>
             <Font name="System Bold" size="12.0" />
          </font>

@@ -1,6 +1,7 @@
 package org.jrc.gerenciador.Models;
 
 public class ClienteModel {
+    private int id;
     private String nome;
     private String cpf_cnpj;
     private String Endereco; 
@@ -12,6 +13,13 @@ public class ClienteModel {
     private String telefone;
     private String observacoes; 
 
+
+
+    public int getId() {return id;}
+
+    public void setId(int id) {
+        this.id = id;
+    }
 
     public String getNome() {return nome;}
 
