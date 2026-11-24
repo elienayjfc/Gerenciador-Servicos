@@ -3,15 +3,15 @@ package org.jrc.gerenciador.Models;
 import java.time.LocalDate;
 
 public class orcamentoModel {
-    private String cliente;
+    private Integer cliente;
     private LocalDate data;
     private String servico_Material;
     private Double valor;
     private String observacoes; 
 
-    public String getCliente() {return cliente;}
+    public Integer getCliente() {return cliente;}
 
-    public void setCliente(String cliente) {
+    public void setCliente(Integer cliente) {
         this.cliente = cliente;
     }
 

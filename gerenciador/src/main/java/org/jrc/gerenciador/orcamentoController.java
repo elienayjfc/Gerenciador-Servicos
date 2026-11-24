@@ -209,7 +209,7 @@ public class orcamentoController implements Initializable {
         List<Orcamento> LTabela = tabela.getItems();
 
         if(!LTabela.isEmpty()) {
-            model.setCliente(String.valueOf(cliente.getValue()));
+            model.setCliente(cliente.getValue().getId());
             model.setData(date.getValue());
             boolean suecesso = orcamento.create(LTabela, model);
 

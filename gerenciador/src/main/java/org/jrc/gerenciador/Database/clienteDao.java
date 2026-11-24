@@ -57,11 +57,12 @@ public class clienteDao {
         List<ClienteModel> clienteList = new ArrayList<>();
 
         try {
-            stmt= con.prepareStatement("SELECT NOME FROM CLIENTES");
+            stmt= con.prepareStatement("SELECT ID, NOME FROM CLIENTES");
             rs = stmt.executeQuery();
 
             while (rs.next()) {
                 ClienteModel cliente = new ClienteModel();
+                cliente.setId(rs.getInt("ID"));
                 cliente.setNome(rs.getString("nome"));
                 clienteList.add(cliente);
             }

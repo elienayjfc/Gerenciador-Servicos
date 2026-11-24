@@ -19,7 +19,7 @@ public class orcamentoDao {
         try {
             con.setAutoCommit(false);
             stmt = con.prepareStatement("INSERT INTO ORCAMENTO (CLIENTE, DATA, SERVICO_MATERIAL, VALOR, OBSERVACOES) VALUES (?, ?, ?, ? ,?)");
-            stmt.setString(1, Morca.getCliente());
+            stmt.setInt(1, Morca.getCliente());
             stmt.setObject(2, Morca.getData());
 
             for (Orcamento orc : items) {
